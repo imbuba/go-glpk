@@ -849,6 +849,11 @@ func (p *Iocp) SetPresolve(on bool) {
 	}
 }
 
+// SetMipGap sets mip gap tolerance
+func (p *Iocp) SetMipGap(val float64) {
+	p.iocp.mip_gap = C.double(val)
+}
+
 // SetMsgLev sets message level.
 func (p *Iocp) SetMsgLev(lev MsgLev) {
 	p.iocp.msg_lev = C.int(lev)
