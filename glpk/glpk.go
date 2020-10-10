@@ -849,9 +849,23 @@ func (p *Iocp) SetPresolve(on bool) {
 	}
 }
 
+// SetBinarize enables or disables the Binarization option (used only if the presolver is enabled).
+func (p *Iocp) SetBinarize(on bool) {
+	if on {
+		p.iocp.binarize = C.GLP_ON
+	} else {
+		p.iocp.binarize = C.GLP_OFF
+	}
+}
+
 // SetMipGap sets mip gap tolerance
 func (p *Iocp) SetMipGap(val float64) {
 	p.iocp.mip_gap = C.double(val)
+}
+
+// SetTimeLimit sets time limit
+func (p *Iocp) SetTimeLimit(val int64) {
+	p.iocp.tm_lim = C.int(val)
 }
 
 // SetMsgLev sets message level.
